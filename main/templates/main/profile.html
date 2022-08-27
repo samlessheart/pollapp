@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container my-2">
+
+    {%for poll in polls%}
+
+    <div class="container rounded border my-2">
+        
+            
+            <p><small>{{forloop.counter}}-</small> {{poll.question}}</p>
+            <ul>
+                <li>{{poll.answers.option_1}}</li>
+                <li>{{poll.answers.option_2}}</li>
+                <li>{{poll.answers.option_3}}</li>
+                <li>{{poll.answers.option_4}}</li>
+            </ul>
+                    
+    </div>
+    {%endfor%}
+
+</div>
+
+
+{% endblock %}

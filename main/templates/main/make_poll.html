@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <form method="POST" action="{% url 'make_poll'%}" class="">
+          {% csrf_token %}
+          <div>  {{form.as_p}} </div>
+            <button type="submit" class="btn btn-primary btn-sm">make poll</button>
+        </form>
+        </div>
+
+
+
+
+{% endblock %}

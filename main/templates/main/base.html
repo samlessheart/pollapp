@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll</title>
+</head>
+<body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark   ">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-xl-around " id="collapse_target">
+                <ul class="navbar-nav px-2">
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#">Create Poll</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#">{{user.username}}</a>
+                    </li>
+
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{%url 'logout' %}">Log Out</a>
+                    </li>
+
+                    
+                    {%else%}
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="#">make an account</a>
+                    </li>
+                    <li class="nav-item px-4">
+                        <a class="nav-link" href="{%url 'login'%}">Log in</a>
+                    </li>
+                    {%endif%}
+
+                </ul>
+                
+            </div>
+
+
+            {% block content %}{% endblock %}
+
+    
+</body>
+</html>

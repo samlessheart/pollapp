@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-2">
+
+    {%for poll in polls%}
+
+    <div class="container rounded border my-2">
+        <form action="{% url 'answer' poll.id%}", method="POST">
+            {%csrf_token%}
+            <p><small>{{forloop.counter}}</small> {{poll.question}}</p>
+            <input type="radio" id="1" name="poll" value="1">
+            <label for="1">{{poll.answers.option_1}}</label><br>
+            <input type="radio" id="2" name="poll" value="2">
+            <label for="2">{{poll.answers.option_2}}</label><br>
+            <input type="radio" id="3" name="poll" value="3">
+            <label for="3">{{poll.answers.option_3}}</label><br>
+            <input type="radio" id="4" name="poll" value="4">
+            <label for="4">{{poll.answers.option_4}}</label><br>
+            <input class="my-1" type="submit" value="Submit">
+        </form>
+    </div>
+    {%endfor%}
+
+</div>
+{% endblock %}
