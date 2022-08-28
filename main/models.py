@@ -12,7 +12,7 @@ class Poll(models.Model):
     count_3 = models.IntegerField(default=0)
     count_4 = models.IntegerField(default=0)
     total = models.IntegerField(default=0)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(editable=True)
 
     def __str__(self) -> str:
         return self.question
