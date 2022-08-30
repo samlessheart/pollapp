@@ -9,6 +9,7 @@ def delete_poll():
     time_threshold = datetime.now() - timedelta(days=1)
     polls = Poll.objects.filter(created__lt = time_threshold)
     polls.delete()
+
     return None
 
 

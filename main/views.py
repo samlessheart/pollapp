@@ -27,7 +27,7 @@ def make_poll(request):
     if request.method == 'POST':
         form = pollForm(request.POST)   
         user = request.user   
-        if user.profile.que_counts < 5:    
+        if user.profile.q_counts < 5:    
             if form.is_valid():                         
                 question= form.cleaned_data['question']
                 option_1= form.cleaned_data['opt1']
@@ -40,8 +40,7 @@ def make_poll(request):
                 answers = Answers.objects.create(option_1=option_1, option_2=option_2, 
                 option_3=option_3, option_4=option_4 , question= poll_obj)
                 answers.save()
-                user.profile.que_counts = user.profile.que_counts + 1 
-                user.profile.save()
+                
                 messages.success(request, f'{user.profile.que_counts} - A Poll has been created')
                 return redirect('profile')
         else:

@@ -1,3 +1,4 @@
+from xml.sax.handler import property_declaration_handler
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -6,7 +7,7 @@ from django.contrib.auth.models import User
 
 class Poll(models.Model):
     question = models.CharField(max_length=300)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="poll")
     count_1 = models.IntegerField(default=0)
     count_2 = models.IntegerField(default=0)
     count_3 = models.IntegerField(default=0)
@@ -30,6 +31,11 @@ class Answers(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User,  on_delete=models.CASCADE)
     que_counts = models.IntegerField(default=0)
+
+    @property
+    def q_counts(self):        
+        return self.user.poll.all().count()
+
 
 
 
